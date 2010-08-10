@@ -69,8 +69,8 @@ def make_ds(zone_name, dnskeys, algorithm='sha-1'):
     res = []
     owner = make_owner(zone_name) 
     for key in ksks:
-        data = owner.to_wire() + key.to_digestable()
-        sha = sha_method(data).hexdigest()
+        message = owner.to_wire() + key.to_digestable()
+        sha = sha_method(message).hexdigest()
         res.append(sha)
     return res
 
